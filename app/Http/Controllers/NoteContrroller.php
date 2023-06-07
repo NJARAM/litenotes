@@ -13,11 +13,11 @@ class NoteContrroller extends Controller
      */
     public function index()
     {
-        //
-      //  $userId=Auth::user()->id;
-       $userId=Auth::id();
-       $notes=Note::where('user_id',$userId)->get();
-       dd($notes);
+       
+       $notes=Note::where('user_id',Auth::id())->get();
+       $notes->each(function($note){
+dump($note->title);
+       });
     }
 
     /**
